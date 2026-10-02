@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>自我介绍 · 王子钊</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{overflow:hidden;}
+  body{
+    background:#1C1F26;display:flex;align-items:center;justify-content:center;
+    min-height:100vh;font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  }
+
+  .slide{
+    position:relative;width:1280px;height:720px;overflow:hidden;
+    background:#FCFAF6;
+    box-shadow:0 30px 90px rgba(0,0,0,.5);
+  }
+
+  /* ============ 油墨画水彩背景 ============ */
+  .ink-bg{position:absolute;inset:0;pointer-events:none;opacity:.92;}
+  .ink-blob{position:absolute;border-radius:50%;filter:blur(62px);}
+  .b1{width:760px;height:760px;background:#FFD1D1;left:-260px;top:-280px;}
+  .b2{width:800px;height:800px;background:#C6E2FF;right:-280px;top:-200px;}
+  .b3{width:720px;height:720px;background:#D9F0E1;left:-220px;bottom:-280px;}
+  .b4{width:760px;height:760px;background:#FDE4C8;right:-240px;bottom:-300px;}
+  .b5{width:560px;height:560px;background:#E8D7FF;left:360px;bottom:-220px;filter:blur(70px);}
+  .b6{width:500px;height:500px;background:#FFE3F0;left:780px;top:180px;filter:blur(65px);opacity:.8;}
+  .b7{width:420px;height:420px;background:#D4F0FF;left:80px;top:300px;filter:blur(60px);opacity:.65;}
+  .b8{width:400px;height:400px;background:#FFF0D4;left:540px;top:80px;filter:blur(60px);opacity:.6;}
+  .splash{
+    position:absolute;inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1280 720'%3E%3Cpath d='M200,100 Q220,80 240,110 T280,100' stroke='%23FF6B4A' stroke-width='5' fill='none' opacity='.22'/%3E%3Cpath d='M1000,600 Q1020,580 1040,610 T1080,600' stroke='%234E7BC8' stroke-width='5' fill='none' opacity='.22'/%3E%3C/svg%3E");
+    background-size:cover;
+  }
+  .dot-grid{position:absolute;left:30px;top:60px;width:120px;height:120px;
+    background-image:radial-gradient(#23305A 2px,transparent 2px);
+    background-size:20px 20px;opacity:.1;}
+  .dot-grid2{position:absolute;right:40px;bottom:60px;width:140px;height:90px;
+    background-image:radial-gradient(#FF6B4A 2px,transparent 2px);
+    background-size:20px 20px;opacity:.15;}
+  .dot-grid3{position:absolute;left:50%;top:14px;transform:translateX(-50%);
+    width:160px;height:30px;
+    background-image:radial-gradient(#4E7BC8 1.8px,transparent 1.8px);
+    background-size:15px 15px;opacity:.12;}
+
+  /* ============ 中心核心卡片 ============ */
+  .center-card{
+    position:absolute;left:50%;top:47%;transform:translate(-50%,-50%) rotate(-2deg);
+    width:460px;padding:34px 28px;background:rgba(255,255,255,.93);
+    border-radius:44px 24px 54px 34px;
+    box-shadow:0 18px 55px rgba(35,48,90,.14), inset 0 0 0 1px rgba(255,255,255,.8);
+    backdrop-filter:blur(10px);text-align:center;z-index:10;
+    border:2px dashed rgba(255,107,74,.4);
+  }
+  .c-en{font-size:12px;letter-spacing:6px;color:#FF6B4A;font-weight:700;}
+  .c-name{font-size:70px;line-height:1;color:#23305A;font-weight:900;
+    letter-spacing:3px;margin-top:8px;font-style:italic;
+    text-shadow:3px 3px 0 rgba(255,107,74,.2);}
+  .c-nickname{display:inline-block;margin-top:10px;padding:6px 22px;border-radius:999px;
+    background:#FF6B4A;color:#fff;font-size:16px;font-weight:700;
+    font-style:italic;letter-spacing:2px;transform:rotate(3deg);
+    box-shadow:0 6px 18px rgba(255,107,74,.35);}
+  .c-info{margin-top:18px;display:flex;flex-direction:column;gap:9px;align-items:center;}
+  .c-info-item{font-size:17px;color:#4A5878;letter-spacing:1px;font-style:italic;font-weight:600;}
+  .c-info-item span{color:#23305A;font-weight:800;}
+  .c-mbti{margin-top:16px;font-size:28px;font-weight:900;color:#4E7BC8;
+    letter-spacing:2px;font-style:italic;}
+  .c-mbti small{display:block;font-size:12px;color:#8A93A6;letter-spacing:3px;
+    font-weight:600;margin-top:6px;font-style:normal;}
+
+  /* ============ 四周环绕文字 ============ */
+  .text-block{position:absolute;pointer-events:none;z-index:5;text-align:center;}
+  .text-block .en{font-size:11px;letter-spacing:4px;color:#A0A9BD;font-weight:700;display:block;}
+  .text-block .cn{display:block;font-size:21px;color:#23305A;font-weight:800;
+    letter-spacing:1px;line-height:1.45;margin-top:5px;}
+  .text-block .cn-sub{display:block;font-size:14px;color:#7A8598;
+    font-weight:600;margin-top:6px;font-style:italic;line-height:1.5;}
+  .hl-orange{color:#FF6B4A !important;}
+  .hl-blue{color:#4E7BC8 !important;}
+  .hl-green{color:#2CB67D !important;}
+  .hl-yellow{color:#E8A020 !important;}
+  .hl-pink{color:#E86A9A !important;}
+
+  .t-top{
+    left:50%;top:24px;transform:translateX(-50%) rotate(-1deg);
+    text-align:center;width:620px;
+  }
+  .t-top .cn{font-size:18px;color:#23305A;font-weight:700;}
+  .t-top .cn em{font-style:italic;color:#FF6B4A;font-weight:800;}
+
+  .t-bottom{
+    left:50%;bottom:16px;transform:translateX(-50%) rotate(1deg);
+    text-align:center;width:800px;
+  }
+  .t-bottom .cn{font-size:17px;color:#23305A;font-weight:700;}
+  .t-bottom .cn em{font-style:italic;color:#4E7BC8;font-weight:800;}
+
+  .t-personality{left:40px;top:130px;transform:rotate(-5deg);width:260px;}
+  .t-inner{left:30px;top:50%;transform:translateY(-50%) rotate(-4deg);width:245px;}
+  .t-music{left:40px;bottom:110px;transform:rotate(-3deg);width:280px;}
+  .t-superpower{right:40px;top:130px;transform:rotate(5deg);width:280px;}
+  .t-sports{right:30px;top:50%;transform:translateY(-50%) rotate(4deg);width:255px;}
+  .t-game{right:40px;bottom:110px;transform:rotate(3deg);width:280px;}
+
+  /* ============ 装饰 ============ */
+  .deco-star{position:absolute;pointer-events:none;z-index:3;
+    animation:spinStar 8s linear infinite;}
+  .deco-star svg{display:block;}
+  @keyframes spinStar{
+    0%{transform:rotate(0deg) scale(1);}
+    50%{transform:rotate(180deg) scale(1.25);}
+    100%{transform:rotate(360deg) scale(1);}
+  }
+  .sparkle{position:absolute;pointer-events:none;z-index:3;font-size:26px;
+    animation:floatSparkle 3s ease-in-out infinite;}
+  @keyframes floatSparkle{
+    0%,100%{transform:translateY(0) scale(1);opacity:.6;}
+    50%{transform:translateY(-18px) scale(1.35);opacity:1;}
+  }
+
+  .tape{position:absolute;width:110px;height:30px;border-radius:3px;
+    z-index:12;pointer-events:none;
+    animation:tapeSway 6s ease-in-out infinite;}
+  @keyframes tapeSway{
+    0%,100%{transform:rotate(-18deg);}
+    50%{transform:rotate(-12deg);}
+  }
+  .tape-tl{left:180px;top:40px;}
+  .tape-tr{right:220px;top:50px;animation-direction:reverse;
+    background:rgba(78,123,200,.28);}
+  .tape-bl{left:200px;bottom:70px;
+    background:rgba(44,182,125,.28);animation-delay:.5s;}
+  .tape-br{right:200px;bottom:80px;animation-delay:1s;
+    background:rgba(232,106,154,.28);}
+
+  .music-note{position:absolute;font-size:46px;pointer-events:none;z-index:4;
+    animation:floatNote 4s ease-in-out infinite;}
+  @keyframes floatNote{
+    0%,100%{transform:translateY(0) rotate(0);}
+    50%{transform:translateY(-24px) rotate(18deg);}
+  }
+  .note1{left:140px;bottom:210px;color:#4E7BC8;animation-delay:0s;}
+  .note2{left:200px;bottom:290px;color:#FF6B4A;animation-delay:.8s;font-size:36px;}
+  .note3{right:160px;bottom:220px;color:#2CB67D;animation-delay:1.5s;font-size:40px;}
+  .note4{right:220px;bottom:300px;color:#E86A9A;animation-delay:.4s;font-size:32px;}
+  .note5{left:110px;top:330px;color:#FFC24B;animation-delay:1.2s;font-size:32px;}
+  .note6{right:120px;top:350px;color:#4E7BC8;animation-delay:.6s;font-size:34px;}
+
+  .sport-deco{position:absolute;pointer-events:none;z-index:4;
+    animation:floatSport 5s ease-in-out infinite;}
+  .sport-deco svg{display:block;}
+  @keyframes floatSport{
+    0%,100%{transform:translateY(0) rotate(0deg);}
+    50%{transform:translateY(-16px) rotate(12deg);}
+  }
+
+  .game-deco{position:absolute;pointer-events:none;z-index:4;
+    animation:floatSport 6s ease-in-out infinite reverse;}
+  .game-deco svg{display:block;}
+
+  .badge{
+    position:absolute;padding:8px 18px;border-radius:8px;
+    font-size:15px;font-weight:700;font-style:italic;
+    letter-spacing:1px;z-index:8;pointer-events:none;
+    box-shadow:0 6px 16px rgba(35,48,90,.15);
+    animation:badgeFloat 4s ease-in-out infinite;
+  }
+  @keyframes badgeFloat{
+    0%,100%{transform:translateY(0) rotate(var(--r,0deg));}
+    50%{transform:translateY(-6px) rotate(var(--r,0deg));}
+  }
+  .badge-orange{background:#FF6B4A;color:#fff;--r:-5deg;}
+  .badge-blue{background:#4E7BC8;color:#fff;--r:4deg;}
+  .badge-green{background:#2CB67D;color:#fff;--r:-3deg;}
+  .badge-pink{background:#E86A9A;color:#fff;--r:-6deg;}
+  .badge-yellow{background:#F2B33D;color:#fff;--r:5deg;}
+
+  .arrow{position:absolute;pointer-events:none;z-index:6;
+    animation:floatArrow 4s ease-in-out infinite;}
+  .arrow svg{display:block;}
+  @keyframes floatArrow{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+  }
+
+  /* ============ 英文短句装饰 ============ */
+  .en-phrase{
+    position:absolute;pointer-events:none;z-index:3;
+    font-family:"Nanum Pen Script","Comic Sans MS",cursive;
+    font-size:20px;font-style:italic;font-weight:700;
+    letter-spacing:3px;white-space:nowrap;
+    animation:phraseGlow 5s ease-in-out infinite;
+  }
+  @keyframes phraseGlow{
+    0%,100%{opacity:.45;transform:scale(1) rotate(var(--pr,0deg));}
+    50%{opacity:.9;transform:scale(1.08) rotate(var(--pr,0deg));}
+  }
+
+  /* ============ 底部标签组 ============ */
+  /* 幽默大师左移 200px：translateX 从 -430px → -630px */
+  .bottom-tag-left{
+    position:absolute;left:50%;bottom:56px;transform:translateX(-630px) rotate(-4deg);
+    z-index:9;pointer-events:none;text-align:center;
+    animation:badgeFloat 4s ease-in-out infinite;
+  }
+  .tag-humor{
+    display:inline-block;padding:7px 16px;border-radius:8px;
+    background:#FF6B4A;color:#fff;font-size:14px;font-weight:700;
+    font-style:italic;letter-spacing:1px;
+    box-shadow:0 6px 16px rgba(255,107,74,.3);
+  }
+  .tag-humor-sub{
+    display:block;margin-top:4px;font-size:12px;color:#7A8598;
+    font-weight:600;font-style:italic;letter-spacing:1px;
+  }
+  /* 游戏搭子标签（独立放在右下游戏区下方） */
+  .bottom-tag-game{
+    position:absolute;right:60px;bottom:48px;
+    z-index:9;pointer-events:none;text-align:center;
+    animation:badgeFloat 4s ease-in-out infinite;
+  }
+  .tag-game{
+    display:inline-block;padding:7px 16px;border-radius:8px;
+    background:#E86A9A;color:#fff;font-size:14px;font-weight:700;
+    font-style:italic;letter-spacing:1px;
+    box-shadow:0 6px 16px rgba(232,106,154,.3);
+  }
+</style>
+</head>
+<body>
+  <div class="slide">
+
+    <!-- ========== 油墨水彩背景 ========== -->
+    <div class="ink-bg">
+      <div class="ink-blob b1"></div>
+      <div class="ink-blob b2"></div>
+      <div class="ink-blob b3"></div>
+      <div class="ink-blob b4"></div>
+      <div class="ink-blob b5"></div>
+      <div class="ink-blob b6"></div>
+      <div class="ink-blob b7"></div>
+      <div class="ink-blob b8"></div>
+      <div class="splash"></div>
+      <div class="dot-grid"></div>
+      <div class="dot-grid2"></div>
+      <div class="dot-grid3"></div>
+    </div>
+
+    <!-- ========== 胶带 ========== -->
+    <div class="tape tape-tl"></div>
+    <div class="tape tape-tr"></div>
+    <div class="tape tape-bl"></div>
+    <div class="tape tape-br"></div>
+
+    <!-- ========== 星星 ========== -->
+    <div class="deco-star" style="left:190px;top:80px;">
+      <svg width="30" height="30" viewBox="0 0 24 24"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z" fill="#FFC24B" opacity=".85"/></svg>
+    </div>
+    <div class="deco-star" style="right:230px;top:90px;animation-duration:10s;">
+      <svg width="26" height="26" viewBox="0 0 24 24"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z" fill="#FF6B4A" opacity=".75"/></svg>
+    </div>
+    <div class="deco-star" style="left:380px;bottom:190px;animation-duration:12s;">
+      <svg width="28" height="28" viewBox="0 0 24 24"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z" fill="#4E7BC8" opacity=".75"/></svg>
+    </div>
+    <div class="deco-star" style="right:390px;bottom:210px;animation-duration:9s;">
+      <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z" fill="#2CB67D" opacity=".75"/></svg>
+    </div>
+    <div class="deco-star" style="left:560px;top:110px;animation-duration:11s;">
+      <svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z" fill="#E86A9A" opacity=".7"/></svg>
+    </div>
+    <div class="deco-star" style="right:580px;top:120px;animation-duration:13s;">
+      <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z" fill="#FFC24B" opacity=".7"/></svg>
+    </div>
+    <div class="deco-star" style="left:500px;bottom:150px;animation-duration:7s;">
+      <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z" fill="#4E7BC8" opacity=".7"/></svg>
+    </div>
+    <div class="deco-star" style="right:510px;bottom:160px;animation-duration:8.5s;">
+      <svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z" fill="#2CB67D" opacity=".7"/></svg>
+    </div>
+
+    <!-- ========== 闪烁点 ========== -->
+    <div class="sparkle" style="left:180px;top:220px;color:#FFC24B;">✦</div>
+    <div class="sparkle" style="right:190px;top:230px;color:#FF6B4A;">✦</div>
+    <div class="sparkle" style="left:340px;bottom:280px;color:#4E7BC8;">✦</div>
+    <div class="sparkle" style="right:340px;bottom:300px;color:#2CB67D;">✦</div>
+    <div class="sparkle" style="left:600px;top:150px;color:#E86A9A;font-size:18px;">✦</div>
+    <div class="sparkle" style="right:610px;top:160px;color:#FFC24B;font-size:18px;">✦</div>
+    <div class="sparkle" style="left:660px;bottom:260px;color:#4E7BC8;font-size:16px;">✦</div>
+    <div class="sparkle" style="right:670px;bottom:270px;color:#FF6B4A;font-size:16px;">✦</div>
+    <div class="sparkle" style="left:50%;top:98px;transform:translateX(-50%);color:#2CB67D;font-size:16px;">✦</div>
+
+    <!-- ========== 英文短句（空白处装饰） ========== -->
+    <div class="en-phrase" style="left:55px;top:255px;color:rgba(255,107,74,.55);--pr:-6deg;">DREAM BIG</div>
+    <div class="en-phrase" style="right:55px;top:255px;color:rgba(78,123,200,.55);--pr:5deg;">STAY CURIOUS</div>
+    <div class="en-phrase" style="left:55px;bottom:395px;color:rgba(44,182,125,.55);--pr:-4deg;">KEEP GOING</div>
+    <div class="en-phrase" style="right:55px;bottom:395px;color:rgba(232,106,154,.55);--pr:6deg;">NO LIMITS</div>
+    <div class="en-phrase" style="left:50%;top:540px;transform:translateX(-50%);color:rgba(232,160,32,.55);--pr:-2deg;">BE YOURSELF · BE BRAVE</div>
+
+    <!-- ========== 音乐元素 ========== -->
+    <div class="music-note note1">♪</div>
+    <div class="music-note note2">♫</div>
+    <div class="music-note note3">♩</div>
+    <div class="music-note note4">♬</div>
+    <div class="music-note note5">♪</div>
+    <div class="music-note note6">♫</div>
+
+    <!-- ========== 运动小装饰 ========== -->
+    <div class="sport-deco" style="right:170px;top:180px;transform:rotate(12deg);">
+      <svg width="70" height="70" viewBox="0 0 54 54">
+        <ellipse cx="27" cy="36" rx="22" ry="7" fill="#FF6B4A" opacity=".18"/>
+        <circle cx="27" cy="24" r="16" fill="#FF8A65"/>
+        <path d="M14 22 Q27 10 40 22" stroke="#FF6B4A" stroke-width="2" fill="none"/>
+        <circle cx="21" cy="20" r="2.5" fill="#fff" opacity=".8"/>
+        <rect x="42" y="12" width="10" height="24" rx="4" fill="#8D4A2F" transform="rotate(30 42 12)"/>
+        <circle cx="47" cy="16" r="7" fill="#C43E2B"/>
+      </svg>
+    </div>
+    <div class="sport-deco" style="right:260px;top:270px;animation-delay:1s;">
+      <svg width="34" height="34" viewBox="0 0 26 26">
+        <circle cx="13" cy="13" r="11" fill="#FFD54F" opacity=".85"/>
+        <path d="M4 11 Q13 2 22 11" stroke="#E8A020" stroke-width="2" fill="none"/>
+      </svg>
+    </div>
+    <div class="sport-deco" style="right:170px;bottom:280px;transform:rotate(-14deg);animation-delay:.5s;">
+      <svg width="70" height="78" viewBox="0 0 54 60">
+        <ellipse cx="27" cy="12" rx="16" ry="10" fill="#EDE7F6" stroke="#7E6BC4" stroke-width="2"/>
+        <path d="M20 6 L27 46" stroke="#B39DDB" stroke-width="2"/>
+        <path d="M27 4 L27 46" stroke="#B39DDB" stroke-width="2"/>
+        <path d="M34 6 L27 46" stroke="#B39DDB" stroke-width="2"/>
+        <path d="M14 12 L27 46" stroke="#B39DDB" stroke-width="1.5"/>
+        <path d="M40 12 L27 46" stroke="#B39DDB" stroke-width="1.5"/>
+        <circle cx="27" cy="50" r="8" fill="#F5F5F5" stroke="#B39DDB" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="sport-deco" style="right:260px;bottom:200px;transform:rotate(20deg);animation-delay:1.5s;">
+      <svg width="30" height="38" viewBox="0 0 24 30">
+        <ellipse cx="12" cy="7" rx="9" ry="6" fill="#E1D4F5" stroke="#7E6BC4" stroke-width="1.5"/>
+        <path d="M12 2 L12 26" stroke="#B39DDB" stroke-width="1.5"/>
+        <circle cx="12" cy="27" r="4.5" fill="#F5F5F5" stroke="#B39DDB" stroke-width="1.5"/>
+      </svg>
+    </div>
+
+    <!-- ========== 游戏小装饰 ========== -->
+    <div class="game-deco" style="left:190px;bottom:220px;transform:rotate(-10deg);">
+      <svg width="60" height="60" viewBox="0 0 48 48">
+        <rect x="6" y="14" width="36" height="22" rx="10" fill="#2B3350"/>
+        <circle cx="16" cy="25" r="5" fill="#FF6B4A"/>
+        <circle cx="32" cy="25" r="5" fill="#4E7BC8"/>
+        <rect x="12" y="20" width="8" height="3" rx="1.5" fill="#fff" opacity=".8"/>
+        <circle cx="20" cy="18" r="2.5" fill="#fff" opacity=".9"/>
+        <circle cx="28" cy="30" r="2.5" fill="#fff" opacity=".9"/>
+      </svg>
+    </div>
+    <div class="game-deco" style="left:150px;top:370px;transform:rotate(15deg);animation-delay:1s;">
+      <svg width="38" height="38" viewBox="0 0 32 32">
+        <circle cx="16" cy="16" r="14" fill="none" stroke="#FF6B4A" stroke-width="3" stroke-dasharray="8 6"/>
+        <circle cx="16" cy="16" r="6" fill="#FF6B4A"/>
+        <circle cx="16" cy="16" r="2" fill="#fff"/>
+      </svg>
+    </div>
+    <div class="game-deco" style="left:250px;bottom:310px;transform:rotate(-18deg);animation-delay:.6s;">
+      <svg width="36" height="36" viewBox="0 0 32 32">
+        <rect x="4" y="10" width="24" height="16" rx="6" fill="#4E7BC8"/>
+        <circle cx="12" cy="18" r="3.5" fill="#fff" opacity=".9"/>
+        <circle cx="20" cy="18" r="3.5" fill="#FFC24B"/>
+      </svg>
+    </div>
+
+    <!-- ========== 箭头指引 ========== -->
+    <div class="arrow" style="left:200px;top:270px;">
+      <svg width="60" height="50" viewBox="0 0 80 60">
+        <path d="M5,55 Q30,10 70,20" stroke="#FF6B4A" stroke-width="3" fill="none" stroke-dasharray="6,5"/>
+        <polygon points="70,20 60,15 66,25" fill="#FF6B4A"/>
+      </svg>
+    </div>
+    <div class="arrow" style="right:200px;top:270px;animation-delay:.5s;">
+      <svg width="60" height="50" viewBox="0 0 80 60">
+        <path d="M75,55 Q50,10 10,20" stroke="#4E7BC8" stroke-width="3" fill="none" stroke-dasharray="6,5"/>
+        <polygon points="10,20 20,15 14,25" fill="#4E7BC8"/>
+      </svg>
+    </div>
+    <div class="arrow" style="left:200px;bottom:190px;animation-delay:1s;">
+      <svg width="60" height="50" viewBox="0 0 80 60">
+        <path d="M5,5 Q30,50 70,40" stroke="#2CB67D" stroke-width="3" fill="none" stroke-dasharray="6,5"/>
+        <polygon points="70,40 60,35 66,45" fill="#2CB67D"/>
+      </svg>
+    </div>
+    <div class="arrow" style="right:200px;bottom:190px;animation-delay:1.5s;">
+      <svg width="60" height="50" viewBox="0 0 80 60">
+        <path d="M75,5 Q50,50 10,40" stroke="#F2B33D" stroke-width="3" fill="none" stroke-dasharray="6,5"/>
+        <polygon points="10,40 20,35 14,45" fill="#F2B33D"/>
+      </svg>
+    </div>
+
+    <!-- ========== 趣味标签 ========== -->
+    <div class="badge badge-orange" style="left:190px;top:210px;">Let's be friends!</div>
+    <div class="badge badge-blue" style="right:240px;top:220px;">电气王子 ⚡</div>
+    <div class="badge badge-green" style="left:220px;bottom:250px;">Music Lover 🎧</div>
+    <div class="badge badge-pink" style="right:200px;bottom:250px;">球搭子速来 🎮</div>
+    <div class="badge badge-yellow" style="left:50%;top:96px;transform:translateX(-50%);">Nice to meet you!</div>
+
+    <!-- ========== 一起加油（居中） ========== -->
+    <div class="badge badge-blue" style="left:250%;bottom:30px;transform:translateX(-30%);">一起加油！</div>
+
+    <!-- 一起加油 左侧：幽默大师（自封）+ 随时接梗（左移 400px） -->
+    <div class="bottom-tag-left">
+      <span class="tag-humor">幽默大师（自封）</span>
+      <span class="tag-humor-sub">随时接梗</span>
+    </div>
+
+    <!-- 右下：游戏搭子求求求（独立于幽默大师，且靠近游戏区） -->
+    <div class="bottom-tag-game">
+      <span class="tag-game">游戏搭子求求求</span>
+    </div>
+
+    <!-- ========== 正上方寄语 ========== -->
+    <div class="text-block t-top">
+      <span class="cn">愿我们在数据部都能<em>挖掘个人无限可能</em>，遇见<em>更好的自己</em>。</span>
+    </div>
+
+    <!-- ========== 正下方寄语 ========== -->
+    <div class="text-block t-bottom">
+      <span class="cn">请自信勇敢地做自己吧！希望和大家<em>互相鼓励、互相支持</em>，一起创造美好的旅程 🌈</span>
+    </div>
+
+    <!-- ========== 左上：性格 ========== -->
+    <div class="text-block t-personality">
+      <span class="en">PERSONALITY</span>
+      <span class="cn hl-orange">性格开朗 · 待人热情</span>
+      <span class="cn-sub">真诚善良 · 自来熟 · 喜欢交朋友</span>
+    </div>
+
+    <!-- ========== 左中：内心 ========== -->
+    <div class="text-block t-inner">
+      <span class="en">INNER WORLD</span>
+      <span class="cn hl-blue">内心细腻 · 高需求</span>
+      <span class="cn-sub">偶尔会内耗，但也很会自愈</span>
+    </div>
+
+    <!-- ========== 左下：听音乐 + 歌手 ========== -->
+    <div class="text-block t-music">
+      <span class="en">HOBBY · MUSIC</span>
+      <span class="cn hl-green">特别喜欢听歌</span>
+      <span class="cn-sub">颜人中 · 郑润泽，单曲循环</span>
+    </div>
+
+    <!-- ========== 右上：理解需求执行力 ========== -->
+    <div class="text-block t-superpower">
+      <span class="en">SUPERPOWER</span>
+      <span class="cn hl-yellow">5G冲浪 · 理解需求</span>
+      <span class="cn-sub">执行力强 · 抗压力 · 责任心</span>
+    </div>
+
+    <!-- ========== 右中：乒乓球羽毛球 ========== -->
+    <div class="text-block t-sports">
+      <span class="en">HOBBY · SPORTS</span>
+      <span class="cn hl-orange">乒乓球 · 羽毛球</span>
+      <span class="cn-sub">球场上见，随时约起！</span>
+    </div>
+
+    <!-- ========== 右下：游戏（独立分区） ========== -->
+    <div class="text-block t-game">
+      <span class="en">GAMING</span>
+      <span class="cn hl-pink">和平精英 · 无畏契约</span>
+      <span class="cn-sub">寻求欢乐 · 一起开黑！</span>
+    </div>
+
+    <!-- ========== 中心核心卡片 ========== -->
+    <div class="center-card">
+      <div class="c-en">HELLO · 自 我 介 绍</div>
+      <div class="c-name">王子钊</div>
+      <div class="c-nickname">电气王子</div>
+      <div class="c-info">
+        <div class="c-info-item"><span>18岁</span> · 天蝎座 · 天津</div>
+        <div class="c-info-item"><span>南昌大学</span> · 信息工程学院</div>
+        <div class="c-info-item"><span>电气工程及其自动化</span></div>
+      </div>
+      <div class="c-mbti">ENFP<small>竞选者 · 热情 · 创意 · 高需求会内耗</small></div>
+    </div>
+
+  </div>
+</body>
+</html>
